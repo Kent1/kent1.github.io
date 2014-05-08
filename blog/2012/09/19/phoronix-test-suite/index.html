@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Accueil - Quentin Loos</title>
+	<title>Phoronix Test Suite - Quentin Loos</title>
 	<meta name="author" content="Quentin">
 	
 	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
@@ -18,7 +18,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://quentinloos.be/">
+	<link rel="canonical" href="http://quentinloos.be/blog/2012/09/19/phoronix-test-suite/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -95,33 +95,62 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Accueil</h1>
-    
-    <div class="entry-content"><p>Je m&#8217;appelle Quentin, j&#8217;ai 23 ans, originaire de Tournai, et actuellement étudiant en 2ème Master en sciences informatiques, à l&#8217;Université de Mons. Je suis passionné d&#8217;informatique depuis très jeune, et mes préférences sont les réseaux, la sécurité, la cryptographie et l&#8217;administration système ainsi que la conception d&#8217;outils logiciels, la complexité des algorithmes et les structures de données. Je suis fort intéressé par les logiciels libres et leurs philosophies, comme par exemple la protection de la vie privée et la décentralisation de l&#8217;internet. Enfin, j&#8217;ai d&#8217;autres passions comme le sport et la cuisine.</p>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Phoronix Test Suite</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img class="right" src="http://openbenchmarking.org/css/pts-200.png" title="&#34;Phoronix Test Suite&#34;" alt="&#34;Phoronix Test Suite&#34;"></p>
 
-<p>Ce site rassemble mes projets, mes articles &amp; tutoriels, ainsi que mon CV.</p>
+<p>Pour un projet, je dois comparer les solutions de virtualisation existantes. Entre autre, un point de comparaison sont les performances. J&#8217;ai donc recours à des <em>benchmarks</em>, des stress tests, qui ont pour but de donner un score de performance de la machine.</p>
 
-<p>Le blog parle énormément d&#8217;auto-hébergement, ma petite passion du moment. N&#8217;hésitez pas à m&#8217;écrire pour me faire des remarques ou même y ajouter des détails !</p>
+<p>Pour réaliser ces benchmarks, j&#8217;ai tout de suite pensé au site connu, <a href="http://www.phoronix.com" title="Phoronix">Phoronix</a>, qui, en quelques années, c&#8217;est imposé comme la référence des tests logiciels et matériels sous GNU/Linux. J&#8217;espérais y trouver des logiciels de benchmarks, et &hellip; j&#8217;ai été comblé ! Il se trouve que le site à lancé son propre logiciel de benchmarks, couvrant tous les aspects possibles à tester, <em>Phoronix Test Suite</em>.</p>
 
-<br />
+<p>Phoronix Test Suite permet donc d&#8217;effectuer des benchmarks. Il comprend des <em>tests</em> et des <em>suites</em> de tests, permettant ainsi de tester le cpu par des tests de compilation, la lecture/écriture sur le disque, mais aussi des tests de logiciels, comme Apache ou Nginx.<!-- more --></p>
 
+<h3>Installation</h3>
 
-<div style="border-bottom:1px solid #ddd;"></div>
+<p>Pour installer Phoronix sur une Debian :</p>
 
+<pre><code># aptitude install phoronix-test-suite
+</code></pre>
 
-<br />
+<p>ou</p>
 
+<pre><code># aptitude install php5-cli php5-gd
+$ wget http://phoronix-test-suite.com/releases/repo/pts.debian/files/phoronix-test-suite_4.6.1_all.deb
+# dpkg -i phoronix-test-suite_4.0.1_all.deb
+</code></pre>
 
-<p>My name is Quentin, I&rsquo;m 23 and I&rsquo;m from Tournai, Belgium. I&rsquo;m currently a second year Master&rsquo;s student in computer science at University of Mons. I&rsquo;m passionate by computers since I&rsquo;m a child, and I&rsquo;m particulary interested in networks, security, cryptography and system administration as well as the design of software tools, complexity of algorithms and data structures. I am also very interested in free and open source software, and I care about the protection of life privacy on the internet and the importance of decentralized networks. Finally, I have other passions like sports and cooking.</p>
+<p>Pour utiliser Phoronix Test Suite, il faut installer des tests. Pour tous les installer, par exemple, on exécute :</p>
 
-<p>This site includes my projects, my articles &amp; tutorials and my resume.</p>
+<pre><code>$ phoronix-test-suite install universe
+</code></pre>
 
-<p>I write a lot about self-hosting on this blog, my little passion of the moment. Feel free to write me if you have any comments or if you want to add any details.</p>
+<p>Phoronix Test Suite gère les dépendances lui même. Cette commande installera la suite <em>universe</em> qui contient tous les tests.</p>
+
+<p>Pour lister les suites qui existent</p>
+
+<pre><code>$ phoronix-test-suite list-available-suites
+</code></pre>
+
+<p>Ensuite on peut exécuter n&#8217;importe quels tests/suites avec la commande run</p>
+
+<pre><code>$ phoronix-test-suite run universe
+</code></pre>
+
+<p>Toutes les commandes peuvent être listées en tapant simplement</p>
+
+<pre><code>$ phoronix-test-suite
+</code></pre>
+
+<p>Pour le reste, je vous laisse lire la doc, disponible <a href="http://phoronix-test-suite.com/?k=documentation">ici</a></p>
+
+<p><a href="http://openbenchmarking.org/" title="OpenBenchmarking"><img src="http://openbenchmarking.org/css/openbenchmarking.png" title="OpenBenchmarking.org" alt="" /></a></p>
+
+<p>Ce site permet d&#8217;accueillir vos benchmarks. En effet, au lancement de tests avec Phoronix Test Suite, le logiciel vous demandera s&#8217;il doit uploader les résultats.</p>
+
+<p>Ensuite on peut facilement comparer avec d&#8217;autres configurations matérielles par exemple.</p>
 </div>
-</article>
 
+</article>
 
 </div>
 			</div>

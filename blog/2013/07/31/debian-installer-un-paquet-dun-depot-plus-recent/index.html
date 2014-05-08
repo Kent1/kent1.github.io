@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Accueil - Quentin Loos</title>
+	<title>Debian : Installer un paquet d’un dépôt plus récent - Quentin Loos</title>
 	<meta name="author" content="Quentin">
 	
 	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
@@ -18,7 +18,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://quentinloos.be/">
+	<link rel="canonical" href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -95,33 +95,40 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Accueil</h1>
-    
-    <div class="entry-content"><p>Je m&#8217;appelle Quentin, j&#8217;ai 23 ans, originaire de Tournai, et actuellement étudiant en 2ème Master en sciences informatiques, à l&#8217;Université de Mons. Je suis passionné d&#8217;informatique depuis très jeune, et mes préférences sont les réseaux, la sécurité, la cryptographie et l&#8217;administration système ainsi que la conception d&#8217;outils logiciels, la complexité des algorithmes et les structures de données. Je suis fort intéressé par les logiciels libres et leurs philosophies, comme par exemple la protection de la vie privée et la décentralisation de l&#8217;internet. Enfin, j&#8217;ai d&#8217;autres passions comme le sport et la cuisine.</p>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Debian : Installer un paquet d’un dépôt plus récent</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Supposons que nous disposons d&#8217;un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d&#8217;être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
 
-<p>Ce site rassemble mes projets, mes articles &amp; tutoriels, ainsi que mon CV.</p>
+<p>Nous allons donc spécifier à Debian qu&#8217;on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>
 
-<p>Le blog parle énormément d&#8217;auto-hébergement, ma petite passion du moment. N&#8217;hésitez pas à m&#8217;écrire pour me faire des remarques ou même y ajouter des détails !</p>
+<p>Commençons donc par ajouter les dépôts dans <em>/etc/apt/sources.list</em></p>
 
-<br />
+<pre><code>## Jessie
+deb http://ftp.be.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
+</code></pre>
 
+<p>Ensuite, on va utiliser une option intéressante dans APT, permettant de lui indiquer notre distribution. Ainsi, on rajoute dans <em>/etc/apt/apt.conf</em> la ligne suivante</p>
 
-<div style="border-bottom:1px solid #ddd;"></div>
+<pre><code>APT::Default-Release "wheezy";
+</code></pre>
 
+<p>permettant de spécifier notre choix de version.</p>
 
-<br />
+<p>Enfin, il suffit d&#8217;installer notre logiciel en spécifiant le dépôt testing de cette manière :</p>
 
+<pre><code># aptitude install -t jessie &lt;nom_paquet&gt;
+</code></pre>
 
-<p>My name is Quentin, I&rsquo;m 23 and I&rsquo;m from Tournai, Belgium. I&rsquo;m currently a second year Master&rsquo;s student in computer science at University of Mons. I&rsquo;m passionate by computers since I&rsquo;m a child, and I&rsquo;m particulary interested in networks, security, cryptography and system administration as well as the design of software tools, complexity of algorithms and data structures. I am also very interested in free and open source software, and I care about the protection of life privacy on the internet and the importance of decentralized networks. Finally, I have other passions like sports and cooking.</p>
+<p>Avec cette configuration, la mise à jour du système s&#8217;occupera de mettre à niveau les paquets qui avaient été installés depuis le dépôt stable en utilisant le dépôt stable actuel et les paquets qui avaient été installés depuis le dépôt testing en utilisant le dépôt testing actuel.</p>
 
-<p>This site includes my projects, my articles &amp; tutorials and my resume.</p>
+<p>On peut s’assurer de la bonne priorité des dépôts avec la commande :</p>
 
-<p>I write a lot about self-hosting on this blog, my little passion of the moment. Feel free to write me if you have any comments or if you want to add any details.</p>
+<pre><code>$ apt-cache policy
+</code></pre>
 </div>
-</article>
 
+</article>
 
 </div>
 			</div>

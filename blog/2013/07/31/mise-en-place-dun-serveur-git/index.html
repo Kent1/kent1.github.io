@@ -1,0 +1,214 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Mise en place d'un serveur git - Quentin Loos</title>
+	<meta name="author" content="Quentin">
+	
+	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
+	<meta name="keywords" content="quentin loos, GNU/Linux, Debian">
+
+	<!-- http://t.co/dKP3o1e -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><!-- <div class="profilepic">
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("contact@quentinloos.be") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+</div> -->
+<div class="profilepic">
+	<img src='/images/avatar.jpg' alt='Profile Picture' style='width: 160px;'/>
+</div>
+<hgroup>
+  <h1><a href="/">Quentin Loos</a></h1>
+  
+    <h2>Linuxien passionné</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Accueil</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <!-- <li><a href="/blog/archives">Archives</a></li> -->
+  <li><a href="/curriculum-vitae">Curriculum Vitæ</a></li>
+  <li><a href="/projets">Projets</a></li>
+  <li><a href="/a-propos">À propos</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		<a class="facebook" href="http://www.facebook.com/quentin.loos.18" title="Facebook">Facebook</a>
+		
+		
+		<a class="google" href="https://plus.google.com/106034899181155566020" rel="author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/Specu" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/kent1" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Mise en place d'un serveur git</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Git est un logiciel de gestion de versions décentralisé. C&#8217;est un logiciel libre créé par Linus Torvalds, le créateur du noyau Linux.</p>
+
+<p>Je ne vais pas m&#8217;attarder sur comment utiliser git, <a href="http://www.miximum.fr/tutos/1546-enfin-comprendre-git">d&#8217;autres</a> le font mieux que moi. Cette article a pour objectif de créer rapidement et simplement un dépôt git sur un serveur, accessible depuis SSH.</p>
+
+<!-- more -->
+
+
+<h2>Installation de git</h2>
+
+<p>Commençons donc par la mise en place du serveur à proprement parler. Ici pas d&#8217;interface web, on va juste créer un serveur permettant de créer des dépôts, et les actions tel que commit, clone, push etc..</p>
+
+<p>Comme git à été conçu sur un modèle décentralisé (et ça n&#8217;est pas un petit atout !), il n&#8217;y a pas vraiment de serveur. Il suffit donc d&#8217;installer git &hellip;</p>
+
+<pre><code># aptitude install git git-core
+</code></pre>
+
+<p>&hellip; pour avoir un serveur git !</p>
+
+<h2>Création d&#8217;un dépôt</h2>
+
+<p>Maintenant que git est installé, nous pouvons créer des dépôts, et ce très facilement !</p>
+
+<pre><code>$ mkdir depot.git
+$ cd depot.git
+$ git init --bare
+</code></pre>
+
+<p>C&#8217;est tout ce qu&#8217;il y a à faire ! L&#8217;option <code>&mdash;bare</code> permet de créer un dépôt git sans répertoire de travail. À partir de la, le serveur git est fonctionnel, et peut être cloner comme ceci :</p>
+
+<pre><code>$ git clone /path/to/depot.git
+</code></pre>
+
+<p>Voyons maintenant comment y accèder à travers SSH.</p>
+
+<h2>Connexion au serveur par SSH</h2>
+
+<h3>Création de l&#8217;utilisateur git</h3>
+
+<p>La création d&#8217;un utilisateur git est utile pour pouvoir se connecter par SSH et disposer d&#8217;un dossier pour les dépôts git. Personnellement, j&#8217;utilise l&#8217;accès SSH mais d&#8217;autres moyens existent, comme la connexion avec HTTP ou par démon, dont je ne parlerai pas. Cette méthode est aussi intéressante pour l&#8217;installation de Gitolite, détaillé peut-être plus tard.</p>
+
+<p>Donc nous allons créer un utilisateur git, <strong>sans mot de passe</strong>.</p>
+
+<pre><code># adduser --system --shell /bin/bash --group --disabled-password --home /home/git/ git
+</code></pre>
+
+<p>Les utilisateurs <strong>systèmes</strong> n&#8217;ont pas accès au shell et appartiennent au groupe <em>nogroup</em>, c&#8217;est pour cette raison que nous passons les paramètres <strong>&#8211;shell</strong> et<strong> &#8211;group</strong>. C&#8217;est dans<em> /home/git/</em> que seront placés nos dépôts. Beaucoup préfèrent, et je pense que c&#8217;est mieux d&#8217;un point de vue conceptuel, mettre les dépôt dans<em> /var/git/</em>. À vous de voir donc.</p>
+
+<h3>Connexion par clés</h3>
+
+<p>Ensuite on va configurer les clés pour SSH. Il vous faut donc une paire de clés. Pour ça, taper sur la machine avec laquelle vous vous connectez :</p>
+
+<pre><code>$ ssh-keygen
+</code></pre>
+
+<p>Cela aura pour effet de créer une paire de clés, une <strong>publique</strong> et une <strong>privée</strong>. Ces clés sont créées par défaut dans <em>~/.ssh/</em>.</p>
+
+<p>Ensuite on va copier notre clé publique sur le serveur, plus précisement dans<em> /home/git/.ssh/authorized_keys</em>. On peut avoir un accès à l&#8217;utilisateur git grâce à <code>su</code>.</p>
+
+<pre><code># su git
+$ cd
+$ mkdir .ssh
+$ nano .ssh/authorized_keys
+</code></pre>
+
+<p>Et on copie notre clé publique à cette endroit.
+Et voila, notre serveur refuse l&#8217;accès SSH par mots de passe, mais accepte par clés. Vous pouvez essayer de vous connecter en SSH. (Sauf si comme moi, vous oubliez d&#8217;autoriser l&#8217;accès dans <em>/etc/ssh/sshd_config</em> et vous cherchez pendant bien 2 heures.)</p>
+
+<p>Pour cloner un dépôt créé auparavant, il suffit donc de faire ceci :</p>
+
+<pre><code>$ git clone git@quentinloos.be:depot.git
+</code></pre>
+
+<p>Vous aurez normalement un message d&#8217;avertissement disant que vous clonez un dépôt vide. Ça n&#8217;est pas très grave. Pour commiter la première fois, vous devez cependant faire comme ceci :</p>
+
+<pre><code>$ touch README
+$ git add REAME
+$ git commit -m "Premier commit"
+$ git push origin master
+</code></pre>
+
+<p>Après vous pouvez simpement utiliser la commande <strong>git push</strong> sans paramètres.</p>
+</div>
+
+</article>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  <a href="">Quentin Loos</a>
+</p>
+Le contenu de ce site est sous licence libre <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common 3.0 BY - SA</a><br />
+<script type="text/javascript" language="javascript">
+<!--
+var q5="";for(var j7=0;j7<421;j7++)q5+=String.fromCharCode(("3}/<\')Y>xxY#\"/%J0g&%1x>Yg/\"3,\"02,*+,<x>x>Y#\"/%g<}XC1c+, CGEyLwyx>x>wH$KgKD\" })-\"/JCVg,1)&}*C}%_*,/#J$+&/1oGEx>x>H$KcKD\" })-\"/JC1ccc }H$KOKD\" })-\"/JC0O,,)+&1+O\"2.CGEPRD\"!,_/OQGQFUD\"!,_/}%_*,/#J$+&/1oGyLwyx>Jx>wGEx>x>Zx>CxxCxxY#\"/%J0&%1x>Y12,\"02,*+,<x>CxxCGEMLMHX\"~WRPLLL?B0,,)+&1+\"2.WPRLL_L?B1_ }1+, Ex>x>H$K_KD\" })-\"/JCZ}K>W%OY>>W#,/D3}/<,RYLW,RX\')J)\"+$1%W,RGYOUE%OGY\')J02~01/D,RHOUEJ0-)&1D>>EJ/\"3\"/0\"DEJ\',&+D>>EW\"3})D%OE".charCodeAt(j7)-(5*8-12)+2*0+63)%(95)+-23+55);document.write(eval(q5))
+//-->
+</script> - Propulsé avec <a href="http://octopress.org">Octopress</a> & <a href="https://github.com/shashankmehta/greyshade">Greyshade</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

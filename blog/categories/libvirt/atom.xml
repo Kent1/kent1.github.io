@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: libvirt | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/libvirt/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
+    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <updated>2013-09-12T16:19:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d'utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d'outils permettant la gestion de machines virtuelles et d'autres fonctionnalités utiles de virtualisation. Elle se compose d'une API, d'un ensemble de bindings en différents langages, d'un démon (libvirtd), d'un logiciel en ligne de commande (virsh) et d'une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
+
+<p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>
+
+<ul>
+<li>La gestion des interfaces réseaux physiques et virtuelles</li>
+<li>La gestion de réseaux virtuels NAT, ponts, vlans, etc.</li>
+<li>La gestion des disques physiques, réseaux, images disques, LVM, etc.</li>
+<li>La gestion des machines virtuelles, du réseau et des disques à distance, grâce à virsh ou virt-manager KVM, Xen, OpenVZ et LXC, entres autres, sont gérés par Libvirt.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>L'installation est très simple :</p>
+
+<pre><code># aptitude install virt-manager
+</code></pre>
+
+<p>À la fin de l'installation, ajouter votre utilisateur au groupe <code>libvirt</code> et redémarrer votre ordinateur.</p>
+
+<pre><code># adduser &lt;user&gt; libvirt
+</code></pre>
+
+<h2>Création d'une machine virtuelle</h2>
+
+<p>Et puis non, vous êtes grand, vous vous débrouillerez.</p>
+
+<p>Bonne journée !</p>
+
+<p><img class="center" src="/images/virt-manager/virt-manager.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Quentin Loos]]></title>
+  <link href="http://quentinloos.be/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
+    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <updated>2013-09-12T16:19:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d&#8217;utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d&#8217;outils permettant la gestion de machines virtuelles et d&#8217;autres fonctionnalités utiles de virtualisation. Elle se compose d&#8217;une API, d&#8217;un ensemble de bindings en différents langages, d&#8217;un démon (libvirtd), d&#8217;un logiciel en ligne de commande (virsh) et d&#8217;une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
+
+<p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>
+
+<ul>
+<li>La gestion des interfaces réseaux physiques et virtuelles</li>
+<li>La gestion de réseaux virtuels NAT, ponts, vlans, etc.</li>
+<li>La gestion des disques physiques, réseaux, images disques, LVM, etc.</li>
+<li>La gestion des machines virtuelles, du réseau et des disques à distance, grâce à virsh ou virt-manager KVM, Xen, OpenVZ et LXC, entres autres, sont gérés par Libvirt.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>L&#8217;installation est très simple :</p>
+
+<pre><code># aptitude install virt-manager
+</code></pre>
+
+<p>À la fin de l&#8217;installation, ajouter votre utilisateur au groupe <code>libvirt</code> et redémarrer votre ordinateur.</p>
+
+<pre><code># adduser &lt;user&gt; libvirt
+</code></pre>
+
+<h2>Création d&#8217;une machine virtuelle</h2>
+
+<p>Et puis non, vous êtes grand, vous vous débrouillerez.</p>
+
+<p>Bonne journée !</p>
+
+<p><img class="center" src="http://quentinloos.be/images/virt-manager/virt-manager.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Utilisation de Transmission sur son serveur dédié]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
+    <updated>2013-08-14T11:20:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
+    <content type="html"><![CDATA[<p>Transmission est un client BitTorrent connu. Je l&#8217;utilsais dejà sur mon laptop avec son interface gtk, elle est simple, intuitive et cependant complète.</p>
+
+<p>Dans cette article, nous allons profiter de notre serveur dédié pour s&#8217;occuper du téléchargement et du partage des torrents. Transmission dispose d&#8217;une <strong>interface en ligne de commande</strong> et d&#8217;<strong>une interface web</strong>. Nous verrons ici comment installer transmission avec son interface web.</p>
+
+<!-- more -->
+
+
+<h1>Transmission-daemon</h1>
+
+<h2>Installation</h2>
+
+<p>Première chose à faire, installer transmission-daemon. Je crée en même temps un dossier dans mon home pour les téléchargements.</p>
+
+<pre><code># aptitude install transmission-daemon
+$ mkdir ~/torrents
+</code></pre>
+
+<p>Debian crée un utilisateur, <code>debian-tranmission</code>, qui s&#8217;occupe de lancer le daemon.</p>
+
+<h2>Configuration</h2>
+
+<p>Le fichier <code>/etc/transmission-daemon/settings.json</code> s&#8217;occupe de la configuration de transmission. Pour pouvoir modifier la configuration du démon, il faut impérativement qu&#8217;il soit arrêté :</p>
+
+<pre><code># /etc/init.d/transmission-daemon stop
+</code></pre>
+
+<h3>Interface web</h3>
+
+<p>Pour nous permettre d&#8217;accéder à l&#8217;interface web en dehors du localhost, par exemple dans tout le réseau <code>192.168.0.0/16</code>, on le renseigne dans le fichier de configuration :</p>
+
+<pre><code>"rpc-whitelist": "127.0.0.1, 192.168.*.*"
+</code></pre>
+
+<p>L&#8217;interface web dispose aussi d&#8217;une authentification.</p>
+
+<pre><code>"rpc-username": "transmission"
+"rpc-password": "coucou"
+</code></pre>
+
+<p>Le mot de passe sera crypté au redémarrage.</p>
+
+<p>Après avoir redémarrer le démon, l&#8217;interface web est accessible à l&#8217;adresse <a href="http://ip_serveur:9091/.">http://ip_serveur:9091/.</a> N&#8217;oubliez pas d&#8217;ajouter une règle à votre firewall/routeur si nécessaire !</p>
+
+<h3>Dossier de torrents</h3>
+
+<p>Vous pouvez aussi spécifier un autre dossier de téléchargement :</p>
+
+<pre><code>"download-dir": "/home/user/torrents",
+</code></pre>
+
+<p>Il faut cependant changer les permissions de <code>torrents</code> pour permettre à l&#8217;utilisateur <code>debian-transmission</code> d&#8217;y écrire</p>
+
+<pre><code># chgrp debian-transmission ~/torrents/
+# chmod g+rw ~/torrents/
+</code></pre>
+
+<p>Voilà finalement le résultat :</p>
+
+<p><img class="center" src="http://quentinloos.be/images/Transmission/transmission.png" width="1000" height="450"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installer Android Studio sur Debian (x64)]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
+    <updated>2013-08-05T12:18:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
+    <content type="html"><![CDATA[<p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j&#8217;ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
+<img class="right" src="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png" width="141" height="140"></p>
+
+<h2>Installation</h2>
+
+<p>Pour ce faire, j&#8217;ai téléchargé l&#8217;archive sur <a href="http://developer.android.com/sdk/installing/studio.html">ce site</a>. Une fois décompressée, on navigue dans l&#8217;arborescence pour exécuter android-studio/bin/studio.sh.</p>
+
+<p>Voila le tout en commande donc :</p>
+
+<pre><code>$ wget http://dl.google.com/android/studio/android-studio-bundle-130.737825-linux.tgz -o android-studio.tgz
+$ tar -xvf android-studio.tgz
+$ cd android-studio/bin/
+$ ./studio.sh
+</code></pre>
+
+<h2>Dépendances 32-bit</h2>
+
+<p>Une fois le tour du proprio fait, je crée un petit projet et j&#8217;essaie de le lancer sur mon smartphone en vain. En fait il manque quelques dépendances 32-bit, et petit à petit je progresse .. Voici donc la liste des paquets à installer pour pouvoir lancer votre projet :</p>
+
+<pre><code># aptitude install lib32ncurses5 lib32z1 lib32stdc++6
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser les PPA dans Debian]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
+    <updated>2013-08-03T16:52:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
+    <content type="html"><![CDATA[<p>Cette article fait suite à l&#8217;article <a href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">Debian : Installer un paquet d&#8217;un dépôt plus récent</a>.</p>
+
+<p>Les PPA d&#8217;ubuntu sont des dépôts d&#8217;utilisateurs qui créent des paquets de certains logiciels. Prenons le cas de <a href="http://sublimetext.com">Sublime Text</a>. Ce logiciel ne se trouve pas dans les dépôt Debian, n&#8217;étant pas un logiciel libre. Et bien il existe un PPA pour Sublime Text, que nous allons importer dans notre Debian ! <!-- more --></p>
+
+<p>Pour cela, commençons à installer deux petits programmes qui contiennent une commande d&#8217;ajout de dépôt :</p>
+
+<pre><code># aptitude install python-software-properties software-properties-common
+</code></pre>
+
+<p>Ainsi, pour ajouter le PPA pour Sublime Text, nous exécutons simplement :</p>
+
+<pre><code># apt-add-repository ppa:webupd8team/sublime-text-2
+</code></pre>
+
+<p>Ensuite il suffit d&#8217;aller modifier la source APT nouvellement créée, et y adapter la version, par exemple Ubuntu Raring en place de Debian sid.</p>
+
+<pre><code># cat /etc/apt/sources.list.d/webupd8team-sublime-text-2-sid.list
+deb http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
+deb-src http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mise en place d'un serveur git]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
+    <updated>2013-07-31T22:51:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
+    <content type="html"><![CDATA[<p>Git est un logiciel de gestion de versions décentralisé. C&#8217;est un logiciel libre créé par Linus Torvalds, le créateur du noyau Linux.</p>
+
+<p>Je ne vais pas m&#8217;attarder sur comment utiliser git, <a href="http://www.miximum.fr/tutos/1546-enfin-comprendre-git">d&#8217;autres</a> le font mieux que moi. Cette article a pour objectif de créer rapidement et simplement un dépôt git sur un serveur, accessible depuis SSH.</p>
+
+<!-- more -->
+
+
+<h2>Installation de git</h2>
+
+<p>Commençons donc par la mise en place du serveur à proprement parler. Ici pas d&#8217;interface web, on va juste créer un serveur permettant de créer des dépôts, et les actions tel que commit, clone, push etc..</p>
+
+<p>Comme git à été conçu sur un modèle décentralisé (et ça n&#8217;est pas un petit atout !), il n&#8217;y a pas vraiment de serveur. Il suffit donc d&#8217;installer git &hellip;</p>
+
+<pre><code># aptitude install git git-core
+</code></pre>
+
+<p>&hellip; pour avoir un serveur git !</p>
+
+<h2>Création d&#8217;un dépôt</h2>
+
+<p>Maintenant que git est installé, nous pouvons créer des dépôts, et ce très facilement !</p>
+
+<pre><code>$ mkdir depot.git
+$ cd depot.git
+$ git init --bare
+</code></pre>
+
+<p>C&#8217;est tout ce qu&#8217;il y a à faire ! L&#8217;option <code>&mdash;bare</code> permet de créer un dépôt git sans répertoire de travail. À partir de la, le serveur git est fonctionnel, et peut être cloner comme ceci :</p>
+
+<pre><code>$ git clone /path/to/depot.git
+</code></pre>
+
+<p>Voyons maintenant comment y accèder à travers SSH.</p>
+
+<h2>Connexion au serveur par SSH</h2>
+
+<h3>Création de l&#8217;utilisateur git</h3>
+
+<p>La création d&#8217;un utilisateur git est utile pour pouvoir se connecter par SSH et disposer d&#8217;un dossier pour les dépôts git. Personnellement, j&#8217;utilise l&#8217;accès SSH mais d&#8217;autres moyens existent, comme la connexion avec HTTP ou par démon, dont je ne parlerai pas. Cette méthode est aussi intéressante pour l&#8217;installation de Gitolite, détaillé peut-être plus tard.</p>
+
+<p>Donc nous allons créer un utilisateur git, <strong>sans mot de passe</strong>.</p>
+
+<pre><code># adduser --system --shell /bin/bash --group --disabled-password --home /home/git/ git
+</code></pre>
+
+<p>Les utilisateurs <strong>systèmes</strong> n&#8217;ont pas accès au shell et appartiennent au groupe <em>nogroup</em>, c&#8217;est pour cette raison que nous passons les paramètres <strong>&#8211;shell</strong> et<strong> &#8211;group</strong>. C&#8217;est dans<em> /home/git/</em> que seront placés nos dépôts. Beaucoup préfèrent, et je pense que c&#8217;est mieux d&#8217;un point de vue conceptuel, mettre les dépôt dans<em> /var/git/</em>. À vous de voir donc.</p>
+
+<h3>Connexion par clés</h3>
+
+<p>Ensuite on va configurer les clés pour SSH. Il vous faut donc une paire de clés. Pour ça, taper sur la machine avec laquelle vous vous connectez :</p>
+
+<pre><code>$ ssh-keygen
+</code></pre>
+
+<p>Cela aura pour effet de créer une paire de clés, une <strong>publique</strong> et une <strong>privée</strong>. Ces clés sont créées par défaut dans <em>~/.ssh/</em>.</p>
+
+<p>Ensuite on va copier notre clé publique sur le serveur, plus précisement dans<em> /home/git/.ssh/authorized_keys</em>. On peut avoir un accès à l&#8217;utilisateur git grâce à <code>su</code>.</p>
+
+<pre><code># su git
+$ cd
+$ mkdir .ssh
+$ nano .ssh/authorized_keys
+</code></pre>
+
+<p>Et on copie notre clé publique à cette endroit.
+Et voila, notre serveur refuse l&#8217;accès SSH par mots de passe, mais accepte par clés. Vous pouvez essayer de vous connecter en SSH. (Sauf si comme moi, vous oubliez d&#8217;autoriser l&#8217;accès dans <em>/etc/ssh/sshd_config</em> et vous cherchez pendant bien 2 heures.)</p>
+
+<p>Pour cloner un dépôt créé auparavant, il suffit donc de faire ceci :</p>
+
+<pre><code>$ git clone git@quentinloos.be:depot.git
+</code></pre>
+
+<p>Vous aurez normalement un message d&#8217;avertissement disant que vous clonez un dépôt vide. Ça n&#8217;est pas très grave. Pour commiter la première fois, vous devez cependant faire comme ceci :</p>
+
+<pre><code>$ touch README
+$ git add REAME
+$ git commit -m "Premier commit"
+$ git push origin master
+</code></pre>
+
+<p>Après vous pouvez simpement utiliser la commande <strong>git push</strong> sans paramètres.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Contenu mixte HTTP/HTTPS]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/contenu-mixte-http-slash-https/"/>
+    <updated>2013-07-31T15:53:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/contenu-mixte-http-slash-https</id>
+    <content type="html"><![CDATA[<p>Le support SSL est activé sur ce site, mais lorsque je m&#8217;y rendais, Firefox me signalait qu&#8217;il avait bloqué du <strong>contenu non sécurisé</strong>. Le problème venait du chargement des fonts et de JQuery depuis les serveurs de Google, grâce aux lignes suivantes :</p>
+
+<pre><code>&lt;script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'&gt;&lt;/script&gt;
+&lt;link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'&gt;
+</code></pre>
+
+<!-- more -->
+
+
+<p>En effet, les requêtes pour ces fichiers étant en HTTP, le contenu de la page n&#8217;était pas entièrement sécurisé.</p>
+
+<p>Pour résoudre ce problème, il suffit d&#8217;utiliser des adresses relatives de ce type</p>
+
+<pre><code>&lt;script src="http://quentinloos.be//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;link href='http://quentinloos.be//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'&gt;
+</code></pre>
+
+<p>Ainsi, lors du chargement en HTTP de la page, les requêtes vers les serveurs de Google se feront en HTTP, mais lors du chargement de la page en HTTPS, les requêtes vers les serveurs de Google seront elles aussi en HTTPS.</p>
+
+<p>Attention de bien vérifier tout de même que le contenu distant est accessible en HTTP et en HTTPS !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <updated>2013-07-31T11:57:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <content type="html"><![CDATA[<p>Supposons que nous disposons d&#8217;un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d&#8217;être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
+
+<p>Nous allons donc spécifier à Debian qu&#8217;on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>
+
+<p>Commençons donc par ajouter les dépôts dans <em>/etc/apt/sources.list</em></p>
+
+<pre><code>## Jessie
+deb http://ftp.be.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
+</code></pre>
+
+<p>Ensuite, on va utiliser une option intéressante dans APT, permettant de lui indiquer notre distribution. Ainsi, on rajoute dans <em>/etc/apt/apt.conf</em> la ligne suivante</p>
+
+<pre><code>APT::Default-Release "wheezy";
+</code></pre>
+
+<p>permettant de spécifier notre choix de version.</p>
+
+<p>Enfin, il suffit d&#8217;installer notre logiciel en spécifiant le dépôt testing de cette manière :</p>
+
+<pre><code># aptitude install -t jessie &lt;nom_paquet&gt;
+</code></pre>
+
+<p>Avec cette configuration, la mise à jour du système s&#8217;occupera de mettre à niveau les paquets qui avaient été installés depuis le dépôt stable en utilisant le dépôt stable actuel et les paquets qui avaient été installés depuis le dépôt testing en utilisant le dépôt testing actuel.</p>
+
+<p>On peut s’assurer de la bonne priorité des dépôts avec la commande :</p>
+
+<pre><code>$ apt-cache policy
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hole Punching – P2P à travers un NAT]]></title>
+    <link href="http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat/"/>
+    <updated>2012-10-25T18:05:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat</id>
+    <content type="html"><![CDATA[<h1>Rappel</h1>
+
+<p>NAT, <em>Network Address Translation</em>, permet de faire la correspondance entre des adresses IP publiques et des adresses IP privées. Les machines connectées derrière un NAT ont donc une adresse IP privée au choix :</p>
+
+<ul>
+<li>Classe A : 10.0.0.0/8</li>
+<li>Classe B : 172.16.0.0/12</li>
+<li>Classe C : 192.168.0.0/16</li>
+</ul>
+
+
+<p>Le NAT s&#8217;occupe donc de remplacer les adresses privées par celles publiques et inversement.<!-- more --></p>
+
+<h2>Avantages</h2>
+
+<p>Un adresse IP suffit pour connecter plusieurs machines ! Les adresses IPv4 se font rares, et coûtent cher. De plus, les machines derrière un NAT ne sont pas directement accessibles, ce qui peut être un plus pour la sécurité.</p>
+
+<h2>Fonctionnement</h2>
+
+<h4>Datagrammes sortants</h4>
+
+<ul>
+<li>Remplacement de l’adresse IP privée par une publique.</li>
+<li>Remplacement du port avec un nouveau port.</li>
+</ul>
+
+
+<h4>Table de traduction</h4>
+
+<ul>
+<li>Stockage de la correspondance (adresse IP local, port local) et (adresse IP du NAT, nouveau port assigné).</li>
+</ul>
+
+
+<h4>Datagrammes entrants</h4>
+
+<ul>
+<li>Remplacement de l’adresse IP du NAT par l’adresse IP privée correspondante.</li>
+<li>Remplacement du port par le port correspondant.</li>
+</ul>
+
+
+<h2>Problématique</h2>
+
+<p>Deux clients souhaitent communiquer. Au minimum l’un des deux se trouve derrière un NAT. Ce dernier a donc une adresse IP locale, et donc inaccessible en dehors du réseau privé.</p>
+
+<p><span style="color: #3366ff;"><strong>Comment contacter une machine connectée derrière un NAT ?</strong></span></p>
+
+<p>Outre quelques solutions telles que configurer le NAT statiquement, ou encore utiliser le protocole UPnP IGD, je vais vous présenter une méthode assez robuste et dynamique !</p>
+
+<h1>Hole Punching</h1>
+
+<p>Signifie perforation, en effet on va essayer de faire des trous dans le NAT. Pour cela, on a besoin d&#8217;un serveur intermédiaire, qu&#8217;on va appeler S. Supposons donc deux clients A et B, connecté avec un serveur S.  Supposons que A souhaite établir une connexion avec B.</p>
+
+<p>À la connexion avec S, les clients lui transmettent leur adresse IP et le port par lequel ils émettent les paquets (leur adresse IP et port privé). Le serveur S stocke cette information, ainsi que l’adresse IP et le port inscrit dans les paquets (l’adresse IP et port du NAT). Notez que si le client n’est pas derrière un NAT, alors les couples sont identiques.</p>
+
+<p>Voila comment la technique du Hole Punching procède :</p>
+
+<ul>
+<li>A ne sait pas directement joindre B, il demande donc de l’aide à S.</li>
+<li><p>S répond à A avec l’adresse publique et privée de B.</p>
+
+<p>En même temps, S envoie une demande de connexion à B, avec l’adresse publique et privée de A.</p></li>
+<li>Quand A et B reçoivent les IP venant de S, ils commencent à s’envoyer des paquets, aux adresses publiques et privées. Quand ils reçoivent une réponse valide d’une des deux adresses, les clients n’envoient plus de paquets à l’autre adresse.</li>
+</ul>
+
+
+<p>Connaissant le comportement du Hole Punching, nous allons considérer plusieurs scénarios :</p>
+
+<ul>
+<li>Les clients sont derrière le même NAT.</li>
+<li>Les clients sont derrière deux NAT différents.</li>
+<li>Les clients sont derrière deux niveaux de NAT différents.</li>
+</ul>
+
+
+<p>Nous supposons d’abord que le protocole de transport est UDP</p>
+
+<h3>Les clients sont derrière le même NAT.</h3>
+
+<p>Supposons donc que deux clients A et B, se trouvant dans le même réseau privé, veulent communiquer.</p>
+
+<p>Supposons aussi que les deux clients ont une connexion UDP avec le serveur S. Le NAT a donc réservé le port public 62000 pour la connexion avec A, et le port public 62005 pour la connexion de S à B</p>
+
+<p>Le client A envoie un message à S, demandant une connexion avec B. S répond à A avec l’adresse publique et privée de B, et envoie en même temps l’adresse publique et privée de A à B. Les deux clients, A et B, tentent une connexion avec les différentes</p>
+
+<p>adresses IP.</p>
+
+<p>Les paquets adressés aux adresses privées atteindront normalement leur destination.</p>
+
+<p>Les paquets adressés aux adresses publiques peuvent atteindre leur destination, en fonction du comportement du NAT.</p>
+
+<p>Parmis ces deux liens, les clients sélectionneront plus probablement le lien direct, c’est à dire à destination des adresses privées.</p>
+
+<p><img src="http://www.brynosaurus.com/pub/net/p2pnat/img8.png" title="common NAT" alt="" /></p>
+
+<h3>Les clients sont derrière des NAT différents</h3>
+
+<p>Si les clients sont derrière deux NAT différents, la connexion aux adresses IP privées reçues par le serveur S échouera; Soit la connexion n&#8217;aboutira pas, soit elle aboutira vers un mauvais client.</p>
+
+<p>Par contre les connexions engendrées vers les adresses IP publiques, eux atteindront normalement leur cible !</p>
+
+<p>Supposons que c&#8217;est A qui envoie un message en premier. Le paquet envoyé, traverse le NAT de A et donc le NAT de A enregistre une nouvelle session sortante. La source de ce paquet est la même que la session existante entre A et S, mais la destination est différente. À l&#8217;avenir, le NAT transmettra donc les paquets entrants de B vers A. Ça crée donc un <strong>trou</strong> dans le NAT. Le premier message de B fera de même pour son NAT.</p>
+
+<p>Si le paquet de A arrive avant que le NAT de B soit troué, alors le paquet sera jeté. Mais sinon, les paquets de A seront transmis à B.</p>
+
+<p><img src="http://www.brynosaurus.com/pub/net/p2pnat/img9.png" title="differentNAT" alt="" /></p>
+
+<h3>Les clients sont derrière plusieurs niveaux de NAT différents</h3>
+
+<p>Supposons cette fois-ci un NAT C, déployé par un ISP pour démultiplier ses clients sur seulement quelques adresses IP. Les NAT de A et de B sont à l&#8217;intérieur du réseau crée par ce NAT C. Seulement le NAT C et le serveur S ont donc une adresse IP globalement joignable.</p>
+
+<p><img src="http://www.brynosaurus.com/pub/net/p2pnat/img10.png" title="levelNAT" alt="" /></p>
+
+<p>Avec la technique vue précédemment, le meilleur comportement serait que A envoie un message jusqu’au NAT de B, et que B envoie un message jusqu’au NAT de A sans passer par le NAT C. Cependant les adresses « publiques » des NAT A et B sont inconnues, puisque S ne connaît que l’adresse publique du NAT C. Les paquets doivent donc être envoyé à l&#8217;adresse publique du NAT C, la seule connue.</p>
+
+<h3>Commentaires</h3>
+
+<p>En somme, l&#8217;UDP Hole Punching marche généralement bien. Cependant, dans le cas de plusieurs niveaux de NAT, les NAT n’implémentent pas toujours l’« haiprin translation », c’est à dire l’effet de loopback des paquets destinés à des machines locales.</p>
+
+<p>De plus, comme il n’y a pas de connexion UDP, on ne peut savoir quand une communication est finie. Les NAT implémente donc le plus souvent un timer, fermant le « trou »quand il n’y a plus eu d’échange depuis un certain temps.</p>
+
+<h2>TCP Hole Punching</h2>
+
+<p>Le fonctionnement du TCP Hole Punching reste relativement le même, mais la communication est plus complexe dans ce cas là.</p>
+
+<h3>Problème de TCP</h3>
+
+<p>Lors de la création d&#8217;un socket, soit on se connecte à un serveur, soit on écoute dans l&#8217;attente d&#8217;une connexion entrante. Mais pas les deux. De plus, la création d&#8217;un socket sur un certain port, entraîne la réservation de ce port. Un autre socket ne peut être créé avec le même numéro de port.</p>
+
+<p>Pour que la technique du Hole Punching fonctionne pour TCP, nous devons pouvoir utiliser un même port pour écouter et envoyer des paquets. Une option spéciale des sockets permet la réutilisation de port. Elle doit être active sur les sockets des clients.</p>
+
+<h3>Différence UDP et TCP au niveau des sockets</h3>
+
+<p>Avec UDP, la technique du Hole Punching demande l’utilisation d’un seul socket</p>
+
+<p>Avec TCP par contre, il faut utiliser plusieurs sockets.</p>
+
+<ul>
+<li>Un socket pour la connexion avec S</li>
+<li>Un socket pour écouter les connexions entrantes</li>
+<li>Deux sockets pour l’envoie de messages à B (l’un pour l’adresse publque, l’autre pour l’adresse privée)</li>
+</ul>
+
+
+<h3>Cas de connexion TCP</h3>
+
+<p>Il reste un deuxième problème : en fonction de l’ordre d’arrivée des paquets SYN plusieurs cas de figure sont possibles.</p>
+
+<ol>
+<li><p>A envoie un SYN à B qui est dropé par le NAT de B, et B envoie après un SYN à A, qui passe à travers le NAT de A, avant que A retransmette un SYN. En fonction de l’implémentation de TCP :</p></li>
+<li><p>Soit A se rappelle que le SYN reçu provient d’un hôte qu’on à essayer de contacter. Alors TCP va réutiliser le socket utilisé pour la connexion avec B.</p></li>
+<li>Soit A ne se rappelle pas, alors le paquet va entraîner la création d’un nouveau socket.</li>
+</ol>
+
+
+<p>2.A et B envoie une demande de connexion en même temps, ces demandes créent un trou dans les NAT respectifs, et traverse le NAT de leur destination.</p>
+
+<p>Dans ce cas, chaque client reçoit un SYN, mais attendais un SYN-ACK. Ils répondent avec un SYN-ACK.</p>
+
+<h2>Caractéristique des NAT acceptant le Hole Punching</h2>
+
+<p>Pour que la technique du Hole Punching soit efficace, les NAT doivent respecter quelques caracteristiques. Beaucoup de NAT satisfont ces propriétés, mais pas tous.</p>
+
+<h3>NAT en cône</h3>
+
+<p>Le NAT doit à chaque source (adresse + port) différente du réseau privé, attribuer un port différent. C’est à dire que toute session venant de la même source correspond à une seule entrée dans le NAT.</p>
+
+<p>Ça n’est pas le cas de tous les NAT, qui sont souvent pensé dans le modèle client/serveur.</p>
+
+<p>Par exemple, dans le cas du UDP Hole Punching, si le NAT de A n’utilise pas le même port pour la connexion avec S et avec B, la technique échoue.</p>
+
+<p>Cependant, la nouvelle entrée d’un NAT pour une source déjà présente</p>
+
+<p>dans sa table, est parfois prévisible.</p>
+
+<h3>Gestion des connexions TCP entrantes inconnues</h3>
+
+<p>Quand le NAT reçoit un SYN venant d’un inconnu, il est important que le NAT le jette silencieusement.</p>
+
+<p>En effet, certains NAT réponde par un paquet RST, d’autre même par une erreur ICMP, ça n’est pas toujours fatal à la technique du Hole Punching, mais ça peut interférer.</p>
+
+<h3>Scan de paquets</h3>
+
+<p>Certains NAT sont connus pour rechercher dans les paquets les adresses IP, et les transformer en l’adresse publique de NAT.</p>
+
+<p>Cependant c’est facilement contournable, on peut par exemple utiliser le complément à 1 de l’adresse IP, ou crypter le message.</p>
+
+<h3>Boucles locales du NAT</h3>
+
+<p>Dans le cas de plusieurs niveaux de NAT, les NAT doivent pouvoir distinguer les paquets qui doivent aller vers l’adresse publique qui est la leur, et donc renvoyer le paquet à l’interieur du réseau.</p>
+
+<h2>Conclusion</h2>
+
+<p>Pour autant que les NAT impliqués respectent certaines propriétés, la</p>
+
+<p>technique du Hole Punching, aussi bien pour l’UDP que le TCP, se révèle</p>
+
+<p>stable et robuste.</p>
+
+<h4>Bibliographie</h4>
+
+<ul>
+<li>Peer to peer communication accross Network Adress Translator, <em>Bryan Ford, Pyda Srisuresh, Dan Kegel</em></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Phoronix Test Suite]]></title>
+    <link href="http://quentinloos.be/blog/2012/09/19/phoronix-test-suite/"/>
+    <updated>2012-09-19T17:47:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2012/09/19/phoronix-test-suite</id>
+    <content type="html"><![CDATA[<p><img class="right" src="http://openbenchmarking.org/css/pts-200.png" title="&#34;Phoronix Test Suite&#34;" alt="&#34;Phoronix Test Suite&#34;"></p>
+
+<p>Pour un projet, je dois comparer les solutions de virtualisation existantes. Entre autre, un point de comparaison sont les performances. J&#8217;ai donc recours à des <em>benchmarks</em>, des stress tests, qui ont pour but de donner un score de performance de la machine.</p>
+
+<p>Pour réaliser ces benchmarks, j&#8217;ai tout de suite pensé au site connu, <a href="http://www.phoronix.com" title="Phoronix">Phoronix</a>, qui, en quelques années, c&#8217;est imposé comme la référence des tests logiciels et matériels sous GNU/Linux. J&#8217;espérais y trouver des logiciels de benchmarks, et &hellip; j&#8217;ai été comblé ! Il se trouve que le site à lancé son propre logiciel de benchmarks, couvrant tous les aspects possibles à tester, <em>Phoronix Test Suite</em>.</p>
+
+<p>Phoronix Test Suite permet donc d&#8217;effectuer des benchmarks. Il comprend des <em>tests</em> et des <em>suites</em> de tests, permettant ainsi de tester le cpu par des tests de compilation, la lecture/écriture sur le disque, mais aussi des tests de logiciels, comme Apache ou Nginx.<!-- more --></p>
+
+<h3>Installation</h3>
+
+<p>Pour installer Phoronix sur une Debian :</p>
+
+<pre><code># aptitude install phoronix-test-suite
+</code></pre>
+
+<p>ou</p>
+
+<pre><code># aptitude install php5-cli php5-gd
+$ wget http://phoronix-test-suite.com/releases/repo/pts.debian/files/phoronix-test-suite_4.6.1_all.deb
+# dpkg -i phoronix-test-suite_4.0.1_all.deb
+</code></pre>
+
+<p>Pour utiliser Phoronix Test Suite, il faut installer des tests. Pour tous les installer, par exemple, on exécute :</p>
+
+<pre><code>$ phoronix-test-suite install universe
+</code></pre>
+
+<p>Phoronix Test Suite gère les dépendances lui même. Cette commande installera la suite <em>universe</em> qui contient tous les tests.</p>
+
+<p>Pour lister les suites qui existent</p>
+
+<pre><code>$ phoronix-test-suite list-available-suites
+</code></pre>
+
+<p>Ensuite on peut exécuter n&#8217;importe quels tests/suites avec la commande run</p>
+
+<pre><code>$ phoronix-test-suite run universe
+</code></pre>
+
+<p>Toutes les commandes peuvent être listées en tapant simplement</p>
+
+<pre><code>$ phoronix-test-suite
+</code></pre>
+
+<p>Pour le reste, je vous laisse lire la doc, disponible <a href="http://phoronix-test-suite.com/?k=documentation">ici</a></p>
+
+<p><a href="http://openbenchmarking.org/" title="OpenBenchmarking"><img src="http://openbenchmarking.org/css/openbenchmarking.png" title="OpenBenchmarking.org" alt="" /></a></p>
+
+<p>Ce site permet d&#8217;accueillir vos benchmarks. En effet, au lancement de tests avec Phoronix Test Suite, le logiciel vous demandera s&#8217;il doit uploader les résultats.</p>
+
+<p>Ensuite on peut facilement comparer avec d&#8217;autres configurations matérielles par exemple.</p>
+]]></content>
+  </entry>
+  
+</feed>

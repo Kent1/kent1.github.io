@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debian | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/debian/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
+    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <updated>2013-09-12T16:19:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d'utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d'outils permettant la gestion de machines virtuelles et d'autres fonctionnalités utiles de virtualisation. Elle se compose d'une API, d'un ensemble de bindings en différents langages, d'un démon (libvirtd), d'un logiciel en ligne de commande (virsh) et d'une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
+
+<p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>
+
+<ul>
+<li>La gestion des interfaces réseaux physiques et virtuelles</li>
+<li>La gestion de réseaux virtuels NAT, ponts, vlans, etc.</li>
+<li>La gestion des disques physiques, réseaux, images disques, LVM, etc.</li>
+<li>La gestion des machines virtuelles, du réseau et des disques à distance, grâce à virsh ou virt-manager KVM, Xen, OpenVZ et LXC, entres autres, sont gérés par Libvirt.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>L'installation est très simple :</p>
+
+<pre><code># aptitude install virt-manager
+</code></pre>
+
+<p>À la fin de l'installation, ajouter votre utilisateur au groupe <code>libvirt</code> et redémarrer votre ordinateur.</p>
+
+<pre><code># adduser &lt;user&gt; libvirt
+</code></pre>
+
+<h2>Création d'une machine virtuelle</h2>
+
+<p>Et puis non, vous êtes grand, vous vous débrouillerez.</p>
+
+<p>Bonne journée !</p>
+
+<p><img class="center" src="/images/virt-manager/virt-manager.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installer Android Studio sur Debian (x64)]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
+    <updated>2013-08-05T12:18:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
+    <content type="html"><![CDATA[<p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j'ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
+<img class="right <a" src="href="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png">http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png</a>" width="141" height="140"></p>
+
+<h2>Installation</h2>
+
+<p>Pour ce faire, j'ai téléchargé l'archive sur <a href="http://developer.android.com/sdk/installing/studio.html">ce site</a>. Une fois décompressée, on navigue dans l'arborescence pour exécuter android-studio/bin/studio.sh.</p>
+
+<p>Voila le tout en commande donc :</p>
+
+<pre><code>$ wget http://dl.google.com/android/studio/android-studio-bundle-130.737825-linux.tgz -o android-studio.tgz
+$ tar -xvf android-studio.tgz
+$ cd android-studio/bin/
+$ ./studio.sh
+</code></pre>
+
+<h2>Dépendances 32-bit</h2>
+
+<p>Une fois le tour du proprio fait, je crée un petit projet et j'essaie de le lancer sur mon smartphone en vain. En fait il manque quelques dépendances 32-bit, et petit à petit je progresse .. Voici donc la liste des paquets à installer pour pouvoir lancer votre projet :</p>
+
+<pre><code># aptitude install lib32ncurses5 lib32z1 lib32stdc++6
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Utiliser les PPA dans Debian]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
+    <updated>2013-08-03T16:52:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
+    <content type="html"><![CDATA[<p>Cette article fait suite à l'article <a href="/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">Debian : Installer un paquet d'un dépôt plus récent</a>.</p>
+
+<p>Les PPA d'ubuntu sont des dépôts d'utilisateurs qui créent des paquets de certains logiciels. Prenons le cas de <a href="http://sublimetext.com">Sublime Text</a>. Ce logiciel ne se trouve pas dans les dépôt Debian, n'étant pas un logiciel libre. Et bien il existe un PPA pour Sublime Text, que nous allons importer dans notre Debian ! <!-- more --></p>
+
+<p>Pour cela, commençons à installer deux petits programmes qui contiennent une commande d'ajout de dépôt :</p>
+
+<pre><code># aptitude install python-software-properties software-properties-common
+</code></pre>
+
+<p>Ainsi, pour ajouter le PPA pour Sublime Text, nous exécutons simplement :</p>
+
+<pre><code># apt-add-repository ppa:webupd8team/sublime-text-2
+</code></pre>
+
+<p>Ensuite il suffit d'aller modifier la source APT nouvellement créée, et y adapter la version, par exemple Ubuntu Raring en place de Debian sid.</p>
+
+<pre><code># cat /etc/apt/sources.list.d/webupd8team-sublime-text-2-sid.list
+deb http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
+deb-src http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <updated>2013-07-31T11:57:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <content type="html"><![CDATA[<p>Supposons que nous disposons d'un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d'être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
+
+<p>Nous allons donc spécifier à Debian qu'on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>
+
+<p>Commençons donc par ajouter les dépôts dans <em>/etc/apt/sources.list</em></p>
+
+<pre><code>## Jessie
+deb http://ftp.be.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
+</code></pre>
+
+<p>Ensuite, on va utiliser une option intéressante dans APT, permettant de lui indiquer notre distribution. Ainsi, on rajoute dans <em>/etc/apt/apt.conf</em> la ligne suivante</p>
+
+<pre><code>APT::Default-Release "wheezy";
+</code></pre>
+
+<p>permettant de spécifier notre choix de version.</p>
+
+<p>Enfin, il suffit d'installer notre logiciel en spécifiant le dépôt testing de cette manière :</p>
+
+<pre><code># aptitude install -t jessie &lt;nom_paquet&gt;
+</code></pre>
+
+<p>Avec cette configuration, la mise à jour du système s'occupera de mettre à niveau les paquets qui avaient été installés depuis le dépôt stable en utilisant le dépôt stable actuel et les paquets qui avaient été installés depuis le dépôt testing en utilisant le dépôt testing actuel.</p>
+
+<p>On peut s’assurer de la bonne priorité des dépôts avec la commande :</p>
+
+<pre><code>$ apt-cache policy
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

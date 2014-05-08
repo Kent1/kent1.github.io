@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Accueil - Quentin Loos</title>
+	<title>Installer Android Studio sur Debian (x64) - Quentin Loos</title>
 	<meta name="author" content="Quentin">
 	
 	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
@@ -18,7 +18,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://quentinloos.be/">
+	<link rel="canonical" href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -95,33 +95,32 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Accueil</h1>
-    
-    <div class="entry-content"><p>Je m&#8217;appelle Quentin, j&#8217;ai 23 ans, originaire de Tournai, et actuellement étudiant en 2ème Master en sciences informatiques, à l&#8217;Université de Mons. Je suis passionné d&#8217;informatique depuis très jeune, et mes préférences sont les réseaux, la sécurité, la cryptographie et l&#8217;administration système ainsi que la conception d&#8217;outils logiciels, la complexité des algorithmes et les structures de données. Je suis fort intéressé par les logiciels libres et leurs philosophies, comme par exemple la protection de la vie privée et la décentralisation de l&#8217;internet. Enfin, j&#8217;ai d&#8217;autres passions comme le sport et la cuisine.</p>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Installer Android Studio sur Debian (x64)</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j&#8217;ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
+<img class="right" src="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png" width="141" height="140"></p>
 
-<p>Ce site rassemble mes projets, mes articles &amp; tutoriels, ainsi que mon CV.</p>
+<h2>Installation</h2>
 
-<p>Le blog parle énormément d&#8217;auto-hébergement, ma petite passion du moment. N&#8217;hésitez pas à m&#8217;écrire pour me faire des remarques ou même y ajouter des détails !</p>
+<p>Pour ce faire, j&#8217;ai téléchargé l&#8217;archive sur <a href="http://developer.android.com/sdk/installing/studio.html">ce site</a>. Une fois décompressée, on navigue dans l&#8217;arborescence pour exécuter android-studio/bin/studio.sh.</p>
 
-<br />
+<p>Voila le tout en commande donc :</p>
 
+<pre><code>$ wget http://dl.google.com/android/studio/android-studio-bundle-130.737825-linux.tgz -o android-studio.tgz
+$ tar -xvf android-studio.tgz
+$ cd android-studio/bin/
+$ ./studio.sh
+</code></pre>
 
-<div style="border-bottom:1px solid #ddd;"></div>
+<h2>Dépendances 32-bit</h2>
 
+<p>Une fois le tour du proprio fait, je crée un petit projet et j&#8217;essaie de le lancer sur mon smartphone en vain. En fait il manque quelques dépendances 32-bit, et petit à petit je progresse .. Voici donc la liste des paquets à installer pour pouvoir lancer votre projet :</p>
 
-<br />
-
-
-<p>My name is Quentin, I&rsquo;m 23 and I&rsquo;m from Tournai, Belgium. I&rsquo;m currently a second year Master&rsquo;s student in computer science at University of Mons. I&rsquo;m passionate by computers since I&rsquo;m a child, and I&rsquo;m particulary interested in networks, security, cryptography and system administration as well as the design of software tools, complexity of algorithms and data structures. I am also very interested in free and open source software, and I care about the protection of life privacy on the internet and the importance of decentralized networks. Finally, I have other passions like sports and cooking.</p>
-
-<p>This site includes my projects, my articles &amp; tutorials and my resume.</p>
-
-<p>I write a lot about self-hosting on this blog, my little passion of the moment. Feel free to write me if you have any comments or if you want to add any details.</p>
+<pre><code># aptitude install lib32ncurses5 lib32z1 lib32stdc++6
+</code></pre>
 </div>
-</article>
 
+</article>
 
 </div>
 			</div>

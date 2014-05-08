@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Auto-hébergement | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/auto-hebergement/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Utilisation de Transmission sur son serveur dédié]]></title>
+    <link href="http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
+    <updated>2013-08-14T11:20:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
+    <content type="html"><![CDATA[<p>Transmission est un client BitTorrent connu. Je l'utilsais dejà sur mon laptop avec son interface gtk, elle est simple, intuitive et cependant complète.</p>
+
+<p>Dans cette article, nous allons profiter de notre serveur dédié pour s'occuper du téléchargement et du partage des torrents. Transmission dispose d'une <strong>interface en ligne de commande</strong> et d'<strong>une interface web</strong>. Nous verrons ici comment installer transmission avec son interface web.</p>
+
+<!-- more -->
+
+
+<h1>Transmission-daemon</h1>
+
+<h2>Installation</h2>
+
+<p>Première chose à faire, installer transmission-daemon. Je crée en même temps un dossier dans mon home pour les téléchargements.</p>
+
+<pre><code># aptitude install transmission-daemon
+$ mkdir ~/torrents
+</code></pre>
+
+<p>Debian crée un utilisateur, <code>debian-tranmission</code>, qui s'occupe de lancer le daemon.</p>
+
+<h2>Configuration</h2>
+
+<p>Le fichier <code>/etc/transmission-daemon/settings.json</code> s'occupe de la configuration de transmission. Pour pouvoir modifier la configuration du démon, il faut impérativement qu'il soit arrêté :</p>
+
+<pre><code># /etc/init.d/transmission-daemon stop
+</code></pre>
+
+<h3>Interface web</h3>
+
+<p>Pour nous permettre d'accéder à l'interface web en dehors du localhost, par exemple dans tout le réseau <code>192.168.0.0/16</code>, on le renseigne dans le fichier de configuration :</p>
+
+<pre><code>"rpc-whitelist": "127.0.0.1, 192.168.*.*"
+</code></pre>
+
+<p>L'interface web dispose aussi d'une authentification.</p>
+
+<pre><code>"rpc-username": "transmission"
+"rpc-password": "coucou"
+</code></pre>
+
+<p>Le mot de passe sera crypté au redémarrage.</p>
+
+<p>Après avoir redémarrer le démon, l'interface web est accessible à l'adresse <a href="http://ip_serveur:9091/.">http://ip_serveur:9091/.</a> N'oubliez pas d'ajouter une règle à votre firewall/routeur si nécessaire !</p>
+
+<h3>Dossier de torrents</h3>
+
+<p>Vous pouvez aussi spécifier un autre dossier de téléchargement :</p>
+
+<pre><code>"download-dir": "/home/user/torrents",
+</code></pre>
+
+<p>Il faut cependant changer les permissions de <code>torrents</code> pour permettre à l'utilisateur <code>debian-transmission</code> d'y écrire</p>
+
+<pre><code># chgrp debian-transmission ~/torrents/
+# chmod g+rw ~/torrents/
+</code></pre>
+
+<p>Voilà finalement le résultat :</p>
+
+<p><img class="center" src="/images/Transmission/transmission.png" width="1000" height="450"></p>
+]]></content>
+  </entry>
+  
+</feed>

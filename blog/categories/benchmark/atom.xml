@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Benchmark | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/benchmark/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Phoronix Test Suite]]></title>
+    <link href="http://quentinloos.be/blog/2012/09/19/phoronix-test-suite/"/>
+    <updated>2012-09-19T17:47:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2012/09/19/phoronix-test-suite</id>
+    <content type="html"><![CDATA[<p><img class="right <a" src="href="http://openbenchmarking.org/css/pts-200.png">http://openbenchmarking.org/css/pts-200.png</a>" title="&ldquo;Phoronix Test Suite&rdquo;" ></p>
+
+<p>Pour un projet, je dois comparer les solutions de virtualisation existantes. Entre autre, un point de comparaison sont les performances. J'ai donc recours à des <em>benchmarks</em>, des stress tests, qui ont pour but de donner un score de performance de la machine.</p>
+
+<p>Pour réaliser ces benchmarks, j'ai tout de suite pensé au site connu, <a href="http://www.phoronix.com" title="Phoronix">Phoronix</a>, qui, en quelques années, c'est imposé comme la référence des tests logiciels et matériels sous GNU/Linux. J'espérais y trouver des logiciels de benchmarks, et &hellip; j'ai été comblé ! Il se trouve que le site à lancé son propre logiciel de benchmarks, couvrant tous les aspects possibles à tester, <em>Phoronix Test Suite</em>.</p>
+
+<p>Phoronix Test Suite permet donc d'effectuer des benchmarks. Il comprend des <em>tests</em> et des <em>suites</em> de tests, permettant ainsi de tester le cpu par des tests de compilation, la lecture/écriture sur le disque, mais aussi des tests de logiciels, comme Apache ou Nginx.<!-- more --></p>
+
+<h3>Installation</h3>
+
+<p>Pour installer Phoronix sur une Debian :</p>
+
+<pre><code># aptitude install phoronix-test-suite
+</code></pre>
+
+<p>ou</p>
+
+<pre><code># aptitude install php5-cli php5-gd
+$ wget http://phoronix-test-suite.com/releases/repo/pts.debian/files/phoronix-test-suite_4.6.1_all.deb
+# dpkg -i phoronix-test-suite_4.0.1_all.deb
+</code></pre>
+
+<p>Pour utiliser Phoronix Test Suite, il faut installer des tests. Pour tous les installer, par exemple, on exécute :</p>
+
+<pre><code>$ phoronix-test-suite install universe
+</code></pre>
+
+<p>Phoronix Test Suite gère les dépendances lui même. Cette commande installera la suite <em>universe</em> qui contient tous les tests.</p>
+
+<p>Pour lister les suites qui existent</p>
+
+<pre><code>$ phoronix-test-suite list-available-suites
+</code></pre>
+
+<p>Ensuite on peut exécuter n'importe quels tests/suites avec la commande run</p>
+
+<pre><code>$ phoronix-test-suite run universe
+</code></pre>
+
+<p>Toutes les commandes peuvent être listées en tapant simplement</p>
+
+<pre><code>$ phoronix-test-suite
+</code></pre>
+
+<p>Pour le reste, je vous laisse lire la doc, disponible <a href="http://phoronix-test-suite.com/?k=documentation">ici</a></p>
+
+<p><a href="http://openbenchmarking.org/" title="OpenBenchmarking"><img src="http://openbenchmarking.org/css/openbenchmarking.png" title="OpenBenchmarking.org" alt="" /></a></p>
+
+<p>Ce site permet d'accueillir vos benchmarks. En effet, au lancement de tests avec Phoronix Test Suite, le logiciel vous demandera s'il doit uploader les résultats.</p>
+
+<p>Ensuite on peut facilement comparer avec d'autres configurations matérielles par exemple.</p>
+]]></content>
+  </entry>
+  
+</feed>

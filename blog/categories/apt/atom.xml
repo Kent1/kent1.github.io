@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: APT | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/apt/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <updated>2013-07-31T11:57:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <content type="html"><![CDATA[<p>Supposons que nous disposons d'un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d'être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
+
+<p>Nous allons donc spécifier à Debian qu'on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>
+
+<p>Commençons donc par ajouter les dépôts dans <em>/etc/apt/sources.list</em></p>
+
+<pre><code>## Jessie
+deb http://ftp.be.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
+</code></pre>
+
+<p>Ensuite, on va utiliser une option intéressante dans APT, permettant de lui indiquer notre distribution. Ainsi, on rajoute dans <em>/etc/apt/apt.conf</em> la ligne suivante</p>
+
+<pre><code>APT::Default-Release "wheezy";
+</code></pre>
+
+<p>permettant de spécifier notre choix de version.</p>
+
+<p>Enfin, il suffit d'installer notre logiciel en spécifiant le dépôt testing de cette manière :</p>
+
+<pre><code># aptitude install -t jessie &lt;nom_paquet&gt;
+</code></pre>
+
+<p>Avec cette configuration, la mise à jour du système s'occupera de mettre à niveau les paquets qui avaient été installés depuis le dépôt stable en utilisant le dépôt stable actuel et les paquets qui avaient été installés depuis le dépôt testing en utilisant le dépôt testing actuel.</p>
+
+<p>On peut s’assurer de la bonne priorité des dépôts avec la commande :</p>
+
+<pre><code>$ apt-cache policy
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

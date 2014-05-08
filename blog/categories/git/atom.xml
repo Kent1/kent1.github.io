@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Quentin Loos]]></title>
+  <link href="http://quentinloos.be/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://quentinloos.be/"/>
+  <updated>2014-02-05T18:49:28+01:00</updated>
+  <id>http://quentinloos.be/</id>
+  <author>
+    <name><![CDATA[Quentin]]></name>
+    <email><![CDATA[contact@quentinloos.be]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mise en place d'un serveur git]]></title>
+    <link href="http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
+    <updated>2013-07-31T22:51:00+02:00</updated>
+    <id>http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
+    <content type="html"><![CDATA[<p>Git est un logiciel de gestion de versions décentralisé. C'est un logiciel libre créé par Linus Torvalds, le créateur du noyau Linux.</p>
+
+<p>Je ne vais pas m'attarder sur comment utiliser git, <a href="http://www.miximum.fr/tutos/1546-enfin-comprendre-git">d'autres</a> le font mieux que moi. Cette article a pour objectif de créer rapidement et simplement un dépôt git sur un serveur, accessible depuis SSH.</p>
+
+<!-- more -->
+
+
+<h2>Installation de git</h2>
+
+<p>Commençons donc par la mise en place du serveur à proprement parler. Ici pas d'interface web, on va juste créer un serveur permettant de créer des dépôts, et les actions tel que commit, clone, push etc..</p>
+
+<p>Comme git à été conçu sur un modèle décentralisé (et ça n'est pas un petit atout !), il n'y a pas vraiment de serveur. Il suffit donc d'installer git &hellip;</p>
+
+<pre><code># aptitude install git git-core
+</code></pre>
+
+<p>&hellip; pour avoir un serveur git !</p>
+
+<h2>Création d'un dépôt</h2>
+
+<p>Maintenant que git est installé, nous pouvons créer des dépôts, et ce très facilement !</p>
+
+<pre><code>$ mkdir depot.git
+$ cd depot.git
+$ git init --bare
+</code></pre>
+
+<p>C'est tout ce qu'il y a à faire ! L'option <code>&mdash;bare</code> permet de créer un dépôt git sans répertoire de travail. À partir de la, le serveur git est fonctionnel, et peut être cloner comme ceci :</p>
+
+<pre><code>$ git clone /path/to/depot.git
+</code></pre>
+
+<p>Voyons maintenant comment y accèder à travers SSH.</p>
+
+<h2>Connexion au serveur par SSH</h2>
+
+<h3>Création de l'utilisateur git</h3>
+
+<p>La création d'un utilisateur git est utile pour pouvoir se connecter par SSH et disposer d'un dossier pour les dépôts git. Personnellement, j'utilise l'accès SSH mais d'autres moyens existent, comme la connexion avec HTTP ou par démon, dont je ne parlerai pas. Cette méthode est aussi intéressante pour l'installation de Gitolite, détaillé peut-être plus tard.</p>
+
+<p>Donc nous allons créer un utilisateur git, <strong>sans mot de passe</strong>.</p>
+
+<pre><code># adduser --system --shell /bin/bash --group --disabled-password --home /home/git/ git
+</code></pre>
+
+<p>Les utilisateurs <strong>systèmes</strong> n'ont pas accès au shell et appartiennent au groupe <em>nogroup</em>, c'est pour cette raison que nous passons les paramètres <strong>&#8211;shell</strong> et<strong> &#8211;group</strong>. C'est dans<em> /home/git/</em> que seront placés nos dépôts. Beaucoup préfèrent, et je pense que c'est mieux d'un point de vue conceptuel, mettre les dépôt dans<em> /var/git/</em>. À vous de voir donc.</p>
+
+<h3>Connexion par clés</h3>
+
+<p>Ensuite on va configurer les clés pour SSH. Il vous faut donc une paire de clés. Pour ça, taper sur la machine avec laquelle vous vous connectez :</p>
+
+<pre><code>$ ssh-keygen
+</code></pre>
+
+<p>Cela aura pour effet de créer une paire de clés, une <strong>publique</strong> et une <strong>privée</strong>. Ces clés sont créées par défaut dans <em>~/.ssh/</em>.</p>
+
+<p>Ensuite on va copier notre clé publique sur le serveur, plus précisement dans<em> /home/git/.ssh/authorized_keys</em>. On peut avoir un accès à l'utilisateur git grâce à <code>su</code>.</p>
+
+<pre><code># su git
+$ cd
+$ mkdir .ssh
+$ nano .ssh/authorized_keys
+</code></pre>
+
+<p>Et on copie notre clé publique à cette endroit.
+Et voila, notre serveur refuse l'accès SSH par mots de passe, mais accepte par clés. Vous pouvez essayer de vous connecter en SSH. (Sauf si comme moi, vous oubliez d'autoriser l'accès dans <em>/etc/ssh/sshd_config</em> et vous cherchez pendant bien 2 heures.)</p>
+
+<p>Pour cloner un dépôt créé auparavant, il suffit donc de faire ceci :</p>
+
+<pre><code>$ git clone git@quentinloos.be:depot.git
+</code></pre>
+
+<p>Vous aurez normalement un message d'avertissement disant que vous clonez un dépôt vide. Ça n'est pas très grave. Pour commiter la première fois, vous devez cependant faire comme ceci :</p>
+
+<pre><code>$ touch README
+$ git add REAME
+$ git commit -m "Premier commit"
+$ git push origin master
+</code></pre>
+
+<p>Après vous pouvez simpement utiliser la commande <strong>git push</strong> sans paramètres.</p>
+]]></content>
+  </entry>
+  
+</feed>

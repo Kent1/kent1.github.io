@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Accueil - Quentin Loos</title>
+	<title>Mobile City Guide - Quentin Loos</title>
 	<meta name="author" content="Quentin">
 	
 	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
@@ -18,7 +18,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://quentinloos.be/">
+	<link rel="canonical" href="http://quentinloos.be/projets/mobile-city-guide/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -97,28 +97,49 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="page">
     
-    <h1 class="title">Accueil</h1>
+    <h1 class="title">Mobile City Guide</h1>
     
-    <div class="entry-content"><p>Je m&#8217;appelle Quentin, j&#8217;ai 23 ans, originaire de Tournai, et actuellement étudiant en 2ème Master en sciences informatiques, à l&#8217;Université de Mons. Je suis passionné d&#8217;informatique depuis très jeune, et mes préférences sont les réseaux, la sécurité, la cryptographie et l&#8217;administration système ainsi que la conception d&#8217;outils logiciels, la complexité des algorithmes et les structures de données. Je suis fort intéressé par les logiciels libres et leurs philosophies, comme par exemple la protection de la vie privée et la décentralisation de l&#8217;internet. Enfin, j&#8217;ai d&#8217;autres passions comme le sport et la cuisine.</p>
+    <div class="entry-content"><p>Mobile City Guide à été fait dans le cadre de mon cours de <em>Génie Logiciel</em> &amp; <em>Gestion de Projets Logiciels</em> de 3ème BAC. Cette application tourne sur la plateforme <em>Android</em> 2.2 et consiste à gérer des points d&rsquo;intérêts dans une ville, et des fonctionnalités autour de ceux-ci.</p>
 
-<p>Ce site rassemble mes projets, mes articles &amp; tutoriels, ainsi que mon CV.</p>
+<p>Imaginons que nous sommes pour la journée dans une ville que nous ne connaissons pas. Nous pouvons donc, grâce a notre smartphone et au logiciel, créer un itinéraire en fonction de paramètres (préférences, temps, argent, &#8230;).</p>
 
-<p>Le blog parle énormément d&#8217;auto-hébergement, ma petite passion du moment. N&#8217;hésitez pas à m&#8217;écrire pour me faire des remarques ou même y ajouter des détails !</p>
+<p>Voila un rapide tour des fonctionnalité de l&rsquo;application.</p>
 
-<br />
+<h3>Exploration</h3>
 
+<p>Lors du lancement de l&rsquo;application, le mode exploration est activé. La position de l&rsquo;utilisateur est déterminé permettant ainsi que les points d&rsquo;intérêts (POIs) situés à proximité soient affichés sur la carte. Si ça n&rsquo;est pas le premier lancement de l&rsquo;application, les POIs environnants de la dernière position connu sont affichés.</p>
 
-<div style="border-bottom:1px solid #ddd;"></div>
+<p>Il est également possible d&rsquo;afficher ces points sous forme d&rsquo;une liste en choisissant l&rsquo;option &laquo;&nbsp;POI List&nbsp;&raquo; dans le menu.</p>
 
+<p>Pour obtenir les informations d&rsquo;un point d&rsquo;intérêt, il suffit d&rsquo;appuyer dessus.</p>
 
-<br />
+<p><img src="/images/mobile-city-guide/map.png" width="300" height="243" title="Map" ></p>
 
+<h3>Affichage d&rsquo;un point d&rsquo;intérêt</h3>
 
-<p>My name is Quentin, I&rsquo;m 23 and I&rsquo;m from Tournai, Belgium. I&rsquo;m currently a second year Master&rsquo;s student in computer science at University of Mons. I&rsquo;m passionate by computers since I&rsquo;m a child, and I&rsquo;m particulary interested in networks, security, cryptography and system administration as well as the design of software tools, complexity of algorithms and data structures. I am also very interested in free and open source software, and I care about the protection of life privacy on the internet and the importance of decentralized networks. Finally, I have other passions like sports and cooking.</p>
+<p>Cet écran présente les informations ainsi qu&rsquo;une brève description du point d&rsquo;intérêt considéré, ainsi que la durée et le prix. C&rsquo;est également sur cet écran qu&rsquo;est donné la possibilité de noter le point d&rsquo;intérêt, de l&rsquo;ajouter à l&rsquo;itinéraire courant ou encore de le marquer comme visité.</p>
 
-<p>This site includes my projects, my articles &amp; tutorials and my resume.</p>
+<p><img src="/images/mobile-city-guide/info.png" width="182" height="300" title="Info" ></p>
 
-<p>I write a lot about self-hosting on this blog, my little passion of the moment. Feel free to write me if you have any comments or if you want to add any details.</p>
+<h3>Préférences</h3>
+
+<p>Accessible depuis le menu, cet écran dispose de deux catégories. D&rsquo;une part le <em>profil utilisateur,</em> comme son nom, son âge et son sexe. Et aussi une catégorie <em>Carte</em> permettant elle, d&rsquo;activer la vue satellite ou de modifier la distance d&rsquo;affichage des POIs environnants et le déplacement nécessaire à une mise à jour des POIs.</p>
+
+<p><strong>Filtres</strong></p>
+
+<p>Il est possible de n&rsquo;afficher que les POIs dont la note est supérieure à une certaine valeur ou dont le tag correspond à une sélection.</p>
+
+<p><img src="/images/mobile-city-guide/filters.png" width="300" height="239" title="Filtres" ></p>
+
+<h3>Itinéraire</h3>
+
+<p>L&rsquo;écran d&rsquo;itinéraire permet de consulter l&rsquo;itinéraire courant et d&rsquo;obtenir des informations dessus. Le menu propose de le supprimer ou d&rsquo;en créer un nouveau à partir de certains critères. On peut aussi simplement supprimer un POI en appuyer longtemps sur celui-ci. Pour afficher l&rsquo;itinéraire courant, il suffit d&rsquo;appuyer sur le bouton <em>Afficher sur la carte</em> ou directement depuis la carte via le menu.</p>
+
+<p><img src="/images/mobile-city-guide/itinerary.png" width="300" height="240" title="Itinéraire" ></p>
+
+<h3>Création d&rsquo;itinéraire</h3>
+
+<p>L&rsquo;application peut proposer un itinéraire, il faut pour cela entrer une durée maximum ainsi qu&rsquo;un prix maximum et optionnellement une note minimum et une liste de tags</p>
 </div>
 </article>
 

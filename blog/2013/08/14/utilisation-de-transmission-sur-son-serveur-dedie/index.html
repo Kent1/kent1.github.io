@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Accueil - Quentin Loos</title>
+	<title>Utilisation de Transmission sur son serveur dédié - Quentin Loos</title>
 	<meta name="author" content="Quentin">
 	
 	<meta name="description" content="Site web, blog, projets personnels de Quentin Loos.">
@@ -18,7 +18,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Quentin Loos" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://quentinloos.be/">
+	<link rel="canonical" href="http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -95,33 +95,70 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Accueil</h1>
-    
-    <div class="entry-content"><p>Je m&#8217;appelle Quentin, j&#8217;ai 23 ans, originaire de Tournai, et actuellement étudiant en 2ème Master en sciences informatiques, à l&#8217;Université de Mons. Je suis passionné d&#8217;informatique depuis très jeune, et mes préférences sont les réseaux, la sécurité, la cryptographie et l&#8217;administration système ainsi que la conception d&#8217;outils logiciels, la complexité des algorithmes et les structures de données. Je suis fort intéressé par les logiciels libres et leurs philosophies, comme par exemple la protection de la vie privée et la décentralisation de l&#8217;internet. Enfin, j&#8217;ai d&#8217;autres passions comme le sport et la cuisine.</p>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Utilisation de Transmission sur son serveur dédié</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Transmission est un client BitTorrent connu. Je l&#8217;utilsais dejà sur mon laptop avec son interface gtk, elle est simple, intuitive et cependant complète.</p>
 
-<p>Ce site rassemble mes projets, mes articles &amp; tutoriels, ainsi que mon CV.</p>
+<p>Dans cette article, nous allons profiter de notre serveur dédié pour s&#8217;occuper du téléchargement et du partage des torrents. Transmission dispose d&#8217;une <strong>interface en ligne de commande</strong> et d&#8217;<strong>une interface web</strong>. Nous verrons ici comment installer transmission avec son interface web.</p>
 
-<p>Le blog parle énormément d&#8217;auto-hébergement, ma petite passion du moment. N&#8217;hésitez pas à m&#8217;écrire pour me faire des remarques ou même y ajouter des détails !</p>
-
-<br />
+<!-- more -->
 
 
-<div style="border-bottom:1px solid #ddd;"></div>
+<h1>Transmission-daemon</h1>
 
+<h2>Installation</h2>
 
-<br />
+<p>Première chose à faire, installer transmission-daemon. Je crée en même temps un dossier dans mon home pour les téléchargements.</p>
 
+<pre><code># aptitude install transmission-daemon
+$ mkdir ~/torrents
+</code></pre>
 
-<p>My name is Quentin, I&rsquo;m 23 and I&rsquo;m from Tournai, Belgium. I&rsquo;m currently a second year Master&rsquo;s student in computer science at University of Mons. I&rsquo;m passionate by computers since I&rsquo;m a child, and I&rsquo;m particulary interested in networks, security, cryptography and system administration as well as the design of software tools, complexity of algorithms and data structures. I am also very interested in free and open source software, and I care about the protection of life privacy on the internet and the importance of decentralized networks. Finally, I have other passions like sports and cooking.</p>
+<p>Debian crée un utilisateur, <code>debian-tranmission</code>, qui s&#8217;occupe de lancer le daemon.</p>
 
-<p>This site includes my projects, my articles &amp; tutorials and my resume.</p>
+<h2>Configuration</h2>
 
-<p>I write a lot about self-hosting on this blog, my little passion of the moment. Feel free to write me if you have any comments or if you want to add any details.</p>
+<p>Le fichier <code>/etc/transmission-daemon/settings.json</code> s&#8217;occupe de la configuration de transmission. Pour pouvoir modifier la configuration du démon, il faut impérativement qu&#8217;il soit arrêté :</p>
+
+<pre><code># /etc/init.d/transmission-daemon stop
+</code></pre>
+
+<h3>Interface web</h3>
+
+<p>Pour nous permettre d&#8217;accéder à l&#8217;interface web en dehors du localhost, par exemple dans tout le réseau <code>192.168.0.0/16</code>, on le renseigne dans le fichier de configuration :</p>
+
+<pre><code>"rpc-whitelist": "127.0.0.1, 192.168.*.*"
+</code></pre>
+
+<p>L&#8217;interface web dispose aussi d&#8217;une authentification.</p>
+
+<pre><code>"rpc-username": "transmission"
+"rpc-password": "coucou"
+</code></pre>
+
+<p>Le mot de passe sera crypté au redémarrage.</p>
+
+<p>Après avoir redémarrer le démon, l&#8217;interface web est accessible à l&#8217;adresse <a href="http://ip_serveur:9091/.">http://ip_serveur:9091/.</a> N&#8217;oubliez pas d&#8217;ajouter une règle à votre firewall/routeur si nécessaire !</p>
+
+<h3>Dossier de torrents</h3>
+
+<p>Vous pouvez aussi spécifier un autre dossier de téléchargement :</p>
+
+<pre><code>"download-dir": "/home/user/torrents",
+</code></pre>
+
+<p>Il faut cependant changer les permissions de <code>torrents</code> pour permettre à l&#8217;utilisateur <code>debian-transmission</code> d&#8217;y écrire</p>
+
+<pre><code># chgrp debian-transmission ~/torrents/
+# chmod g+rw ~/torrents/
+</code></pre>
+
+<p>Voilà finalement le résultat :</p>
+
+<p><img class="center" src="/images/Transmission/transmission.png" width="1000" height="450"></p>
 </div>
-</article>
 
+</article>
 
 </div>
 			</div>

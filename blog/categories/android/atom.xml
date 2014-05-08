@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Android | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installer Android Studio sur Debian (x64)]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
     <updated>2013-08-05T12:18:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
+    <id>http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
     <content type="html"><![CDATA[<p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j'ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
 <img class="right <a" src="href="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png">http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png</a>" width="141" height="140"></p>
 

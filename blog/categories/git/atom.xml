@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: git | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mise en place d'un serveur git]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
     <updated>2013-07-31T22:51:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
     <content type="html"><![CDATA[<p>Git est un logiciel de gestion de versions décentralisé. C'est un logiciel libre créé par Linus Torvalds, le créateur du noyau Linux.</p>
 
 <p>Je ne vais pas m'attarder sur comment utiliser git, <a href="http://www.miximum.fr/tutos/1546-enfin-comprendre-git">d'autres</a> le font mieux que moi. Cette article a pour objectif de créer rapidement et simplement un dépôt git sur un serveur, accessible depuis SSH.</p>

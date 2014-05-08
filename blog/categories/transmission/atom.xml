@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Transmission | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/transmission/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/transmission/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Utilisation de Transmission sur son serveur dédié]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
     <updated>2013-08-14T11:20:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
+    <id>http://Kent1.github.io/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
     <content type="html"><![CDATA[<p>Transmission est un client BitTorrent connu. Je l'utilsais dejà sur mon laptop avec son interface gtk, elle est simple, intuitive et cependant complète.</p>
 
 <p>Dans cette article, nous allons profiter de notre serveur dédié pour s'occuper du téléchargement et du partage des torrents. Transmission dispose d'une <strong>interface en ligne de commande</strong> et d'<strong>une interface web</strong>. Nous verrons ici comment installer transmission avec son interface web.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: APT | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/apt/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/apt/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
     <updated>2013-07-31T11:57:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
     <content type="html"><![CDATA[<p>Supposons que nous disposons d'un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d'être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
 
 <p>Nous allons donc spécifier à Debian qu'on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>

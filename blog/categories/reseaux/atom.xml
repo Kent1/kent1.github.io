@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Réseaux | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/reseaux/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/reseaux/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hole Punching – P2P à travers un NAT]]></title>
-    <link href="http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat/"/>
+    <link href="http://Kent1.github.io/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat/"/>
     <updated>2012-10-25T18:05:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat</id>
+    <id>http://Kent1.github.io/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat</id>
     <content type="html"><![CDATA[<h1>Rappel</h1>
 
 <p>NAT, <em>Network Address Translation</em>, permet de faire la correspondance entre des adresses IP publiques et des adresses IP privées. Les machines connectées derrière un NAT ont donc une adresse IP privée au choix :</p>

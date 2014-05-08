@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://quentinloos.be/sitemap.xml 
+Sitemap: http://Kent1.github.io/sitemap.xml 

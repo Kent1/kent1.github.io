@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: libvirt | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/libvirt/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/libvirt/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
-    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <link href="http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
     <updated>2013-09-12T16:19:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <id>http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager</id>
     <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d'utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d'outils permettant la gestion de machines virtuelles et d'autres fonctionnalités utiles de virtualisation. Elle se compose d'une API, d'un ensemble de bindings en différents langages, d'un démon (libvirtd), d'un logiciel en ligne de commande (virsh) et d'une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
 
 <p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>

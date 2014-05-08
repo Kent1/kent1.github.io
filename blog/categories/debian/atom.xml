@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Debian | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/debian/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/debian/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
-    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <link href="http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
     <updated>2013-09-12T16:19:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <id>http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager</id>
     <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d'utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d'outils permettant la gestion de machines virtuelles et d'autres fonctionnalités utiles de virtualisation. Elle se compose d'une API, d'un ensemble de bindings en différents langages, d'un démon (libvirtd), d'un logiciel en ligne de commande (virsh) et d'une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
 
 <p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>
@@ -54,9 +54,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installer Android Studio sur Debian (x64)]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
     <updated>2013-08-05T12:18:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
+    <id>http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
     <content type="html"><![CDATA[<p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j'ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
 <img class="right <a" src="href="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png">http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png</a>" width="141" height="140"></p>
 
@@ -83,9 +83,9 @@ $ ./studio.sh
   
   <entry>
     <title type="html"><![CDATA[Utiliser les PPA dans Debian]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
     <updated>2013-08-03T16:52:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
+    <id>http://Kent1.github.io/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
     <content type="html"><![CDATA[<p>Cette article fait suite à l'article <a href="/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">Debian : Installer un paquet d'un dépôt plus récent</a>.</p>
 
 <p>Les PPA d'ubuntu sont des dépôts d'utilisateurs qui créent des paquets de certains logiciels. Prenons le cas de <a href="http://sublimetext.com">Sublime Text</a>. Ce logiciel ne se trouve pas dans les dépôt Debian, n'étant pas un logiciel libre. Et bien il existe un PPA pour Sublime Text, que nous allons importer dans notre Debian ! <!-- more --></p>
@@ -111,9 +111,9 @@ deb-src http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
   
   <entry>
     <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
     <updated>2013-07-31T11:57:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
     <content type="html"><![CDATA[<p>Supposons que nous disposons d'un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d'être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
 
 <p>Nous allons donc spécifier à Debian qu'on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>

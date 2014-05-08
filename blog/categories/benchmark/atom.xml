@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Benchmark | Quentin Loos]]></title>
-  <link href="http://quentinloos.be/blog/categories/benchmark/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/blog/categories/benchmark/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Phoronix Test Suite]]></title>
-    <link href="http://quentinloos.be/blog/2012/09/19/phoronix-test-suite/"/>
+    <link href="http://Kent1.github.io/blog/2012/09/19/phoronix-test-suite/"/>
     <updated>2012-09-19T17:47:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2012/09/19/phoronix-test-suite</id>
+    <id>http://Kent1.github.io/blog/2012/09/19/phoronix-test-suite</id>
     <content type="html"><![CDATA[<p><img class="right <a" src="href="http://openbenchmarking.org/css/pts-200.png">http://openbenchmarking.org/css/pts-200.png</a>" title="&ldquo;Phoronix Test Suite&rdquo;" ></p>
 
 <p>Pour un projet, je dois comparer les solutions de virtualisation existantes. Entre autre, un point de comparaison sont les performances. J'ai donc recours à des <em>benchmarks</em>, des stress tests, qui ont pour but de donner un score de performance de la machine.</p>

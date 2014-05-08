@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Quentin Loos]]></title>
-  <link href="http://quentinloos.be/atom.xml" rel="self"/>
-  <link href="http://quentinloos.be/"/>
-  <updated>2014-02-05T18:49:28+01:00</updated>
-  <id>http://quentinloos.be/</id>
+  <link href="http://Kent1.github.io/atom.xml" rel="self"/>
+  <link href="http://Kent1.github.io/"/>
+  <updated>2014-05-08T22:51:07+02:00</updated>
+  <id>http://Kent1.github.io/</id>
   <author>
     <name><![CDATA[Quentin]]></name>
     <email><![CDATA[contact@quentinloos.be]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Virtualisation avec virt-manager]]></title>
-    <link href="http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
+    <link href="http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager/"/>
     <updated>2013-09-12T16:19:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/09/12/virtualisation-avec-virt-manager</id>
+    <id>http://Kent1.github.io/blog/2013/09/12/virtualisation-avec-virt-manager</id>
     <content type="html"><![CDATA[<p>virt-manager est une interface graphique permettant d&#8217;utiliser <strong>libvirt</strong> pour créer des machines virtuelles. Libvirt est un ensemble d&#8217;outils permettant la gestion de machines virtuelles et d&#8217;autres fonctionnalités utiles de virtualisation. Elle se compose d&#8217;une API, d&#8217;un ensemble de bindings en différents langages, d&#8217;un démon (libvirtd), d&#8217;un logiciel en ligne de commande (virsh) et d&#8217;une interface graphique (virt-manager). Cet outil permet donc de gérer des machines virtuelles, quels que soient le ou les hyperviseurs en charge de celles-ci, sans apprendre à utiliser tous les outils propres à chaque solution de virtualisation. <!-- more --></p>
 
 <p>Libvirt permet donc, outre la gestion des machines virtuelles (création, démarrage, arrêt, etc.) :</p>
@@ -48,15 +48,15 @@
 
 <p>Bonne journée !</p>
 
-<p><img class="center" src="http://quentinloos.be/images/virt-manager/virt-manager.png"></p>
+<p><img class="center" src="http://Kent1.github.io/images/virt-manager/virt-manager.png"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Utilisation de Transmission sur son serveur dédié]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie/"/>
     <updated>2013-08-14T11:20:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
+    <id>http://Kent1.github.io/blog/2013/08/14/utilisation-de-transmission-sur-son-serveur-dedie</id>
     <content type="html"><![CDATA[<p>Transmission est un client BitTorrent connu. Je l&#8217;utilsais dejà sur mon laptop avec son interface gtk, elle est simple, intuitive et cependant complète.</p>
 
 <p>Dans cette article, nous allons profiter de notre serveur dédié pour s&#8217;occuper du téléchargement et du partage des torrents. Transmission dispose d&#8217;une <strong>interface en ligne de commande</strong> et d&#8217;<strong>une interface web</strong>. Nous verrons ici comment installer transmission avec son interface web.</p>
@@ -115,15 +115,15 @@ $ mkdir ~/torrents
 
 <p>Voilà finalement le résultat :</p>
 
-<p><img class="center" src="http://quentinloos.be/images/Transmission/transmission.png" width="1000" height="450"></p>
+<p><img class="center" src="http://Kent1.github.io/images/Transmission/transmission.png" width="1000" height="450"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Installer Android Studio sur Debian (x64)]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64/"/>
     <updated>2013-08-05T12:18:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
+    <id>http://Kent1.github.io/blog/2013/08/05/installer-android-studio-sur-debian-x64</id>
     <content type="html"><![CDATA[<p>Voulant essayer, et pourquoi pas refaire un peu de développement Android, j&#8217;ai décidé de tester leur nouvel IDE pour Android, à savoir Android Studio. <!-- more -->
 <img class="right" src="http://1.bp.blogspot.com/-u5dfSsMOMC0/UZO_5DC_W9I/AAAAAAAACM8/YCMn15HPzpE/s320/Studio_table.png" width="141" height="140"></p>
 
@@ -150,10 +150,10 @@ $ ./studio.sh
   
   <entry>
     <title type="html"><![CDATA[Utiliser les PPA dans Debian]]></title>
-    <link href="http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
+    <link href="http://Kent1.github.io/blog/2013/08/03/utiliser-les-ppa-dans-debian/"/>
     <updated>2013-08-03T16:52:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
-    <content type="html"><![CDATA[<p>Cette article fait suite à l&#8217;article <a href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">Debian : Installer un paquet d&#8217;un dépôt plus récent</a>.</p>
+    <id>http://Kent1.github.io/blog/2013/08/03/utiliser-les-ppa-dans-debian</id>
+    <content type="html"><![CDATA[<p>Cette article fait suite à l&#8217;article <a href="http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/">Debian : Installer un paquet d&#8217;un dépôt plus récent</a>.</p>
 
 <p>Les PPA d&#8217;ubuntu sont des dépôts d&#8217;utilisateurs qui créent des paquets de certains logiciels. Prenons le cas de <a href="http://sublimetext.com">Sublime Text</a>. Ce logiciel ne se trouve pas dans les dépôt Debian, n&#8217;étant pas un logiciel libre. Et bien il existe un PPA pour Sublime Text, que nous allons importer dans notre Debian ! <!-- more --></p>
 
@@ -178,9 +178,9 @@ deb-src http://ppa.launchpad.net/webupd8team/sublime-text-2/ubuntu raring main
   
   <entry>
     <title type="html"><![CDATA[Mise en place d'un serveur git]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/mise-en-place-dun-serveur-git/"/>
     <updated>2013-07-31T22:51:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/mise-en-place-dun-serveur-git</id>
     <content type="html"><![CDATA[<p>Git est un logiciel de gestion de versions décentralisé. C&#8217;est un logiciel libre créé par Linus Torvalds, le créateur du noyau Linux.</p>
 
 <p>Je ne vais pas m&#8217;attarder sur comment utiliser git, <a href="http://www.miximum.fr/tutos/1546-enfin-comprendre-git">d&#8217;autres</a> le font mieux que moi. Cette article a pour objectif de créer rapidement et simplement un dépôt git sur un serveur, accessible depuis SSH.</p>
@@ -267,9 +267,9 @@ $ git push origin master
   
   <entry>
     <title type="html"><![CDATA[Contenu mixte HTTP/HTTPS]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/contenu-mixte-http-slash-https/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/contenu-mixte-http-slash-https/"/>
     <updated>2013-07-31T15:53:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/contenu-mixte-http-slash-https</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/contenu-mixte-http-slash-https</id>
     <content type="html"><![CDATA[<p>Le support SSL est activé sur ce site, mais lorsque je m&#8217;y rendais, Firefox me signalait qu&#8217;il avait bloqué du <strong>contenu non sécurisé</strong>. Le problème venait du chargement des fonts et de JQuery depuis les serveurs de Google, grâce aux lignes suivantes :</p>
 
 <pre><code>&lt;script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'&gt;&lt;/script&gt;
@@ -283,8 +283,8 @@ $ git push origin master
 
 <p>Pour résoudre ce problème, il suffit d&#8217;utiliser des adresses relatives de ce type</p>
 
-<pre><code>&lt;script src="http://quentinloos.be//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"&gt;&lt;/script&gt;
-&lt;link href='http://quentinloos.be//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'&gt;
+<pre><code>&lt;script src="http://Kent1.github.io//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;link href='http://Kent1.github.io//fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'&gt;
 </code></pre>
 
 <p>Ainsi, lors du chargement en HTTP de la page, les requêtes vers les serveurs de Google se feront en HTTP, mais lors du chargement de la page en HTTPS, les requêtes vers les serveurs de Google seront elles aussi en HTTPS.</p>
@@ -295,9 +295,9 @@ $ git push origin master
   
   <entry>
     <title type="html"><![CDATA[Debian : Installer un paquet d’un dépôt plus récent]]></title>
-    <link href="http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
+    <link href="http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent/"/>
     <updated>2013-07-31T11:57:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
+    <id>http://Kent1.github.io/blog/2013/07/31/debian-installer-un-paquet-dun-depot-plus-recent</id>
     <content type="html"><![CDATA[<p>Supposons que nous disposons d&#8217;un serveur tournant avec Debian stable. Les paquets de la stable ont pour avantage d&#8217;être moins sujets aux bugs. Cependant, dans certains cas, il est intéressant d’avoir la dernière version d’un logiciel, en particulier pour des applications jeunes ou à la mode, mais néanmoins intéressantes ! Certains paquets comme <strong>Node.js</strong> ou <strong>ownCloud</strong> ne sont même pas présent dans les dépôts <strong>Wheezy</strong> !</p>
 
 <p>Nous allons donc spécifier à Debian qu&#8217;on souhaite que certains paquets soient installés à partir des dépôts de <strong>Jessie</strong><!-- more --></p>
@@ -332,9 +332,9 @@ deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
   
   <entry>
     <title type="html"><![CDATA[Hole Punching – P2P à travers un NAT]]></title>
-    <link href="http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat/"/>
+    <link href="http://Kent1.github.io/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat/"/>
     <updated>2012-10-25T18:05:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat</id>
+    <id>http://Kent1.github.io/blog/2012/10/25/hole-punching-p2p-a-travers-un-nat</id>
     <content type="html"><![CDATA[<h1>Rappel</h1>
 
 <p>NAT, <em>Network Address Translation</em>, permet de faire la correspondance entre des adresses IP publiques et des adresses IP privées. Les machines connectées derrière un NAT ont donc une adresse IP privée au choix :</p>
@@ -546,9 +546,9 @@ deb-src http://ftp.be.debian.org/debian/ jessie main non-free contrib
   
   <entry>
     <title type="html"><![CDATA[Phoronix Test Suite]]></title>
-    <link href="http://quentinloos.be/blog/2012/09/19/phoronix-test-suite/"/>
+    <link href="http://Kent1.github.io/blog/2012/09/19/phoronix-test-suite/"/>
     <updated>2012-09-19T17:47:00+02:00</updated>
-    <id>http://quentinloos.be/blog/2012/09/19/phoronix-test-suite</id>
+    <id>http://Kent1.github.io/blog/2012/09/19/phoronix-test-suite</id>
     <content type="html"><![CDATA[<p><img class="right" src="http://openbenchmarking.org/css/pts-200.png" title="&#34;Phoronix Test Suite&#34;" alt="&#34;Phoronix Test Suite&#34;"></p>
 
 <p>Pour un projet, je dois comparer les solutions de virtualisation existantes. Entre autre, un point de comparaison sont les performances. J&#8217;ai donc recours à des <em>benchmarks</em>, des stress tests, qui ont pour but de donner un score de performance de la machine.</p>
